@@ -5,13 +5,16 @@ import logging from '@/utils/logging';
 const getAllPokemon = async () => {
   const query = gql`
     query getAllPokemon {
-      data: pokemon_v2_pokemon(limit: 10) {
+      data: pokemon(limit: 20) {
         name
         id
-        types: pokemon_v2_pokemontypes {
-          data: pokemon_v2_type {
+        types: pokemontypes {
+          data: type {
             name
           }
+        }
+        sprites: pokemonsprites {
+          sprites
         }
       }
     }
