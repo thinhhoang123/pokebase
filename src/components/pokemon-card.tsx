@@ -18,9 +18,7 @@ export default function PokemonCard({ pokemon }) {
             className="drop-shadow-lg"
           />
         </div>
-        <h2 className="card-title font-bold">
-          {capitalizeFirstLetter(pokemon.name)}
-        </h2>
+        <h2 className="card-title">{capitalizeFirstLetter(pokemon.name)}</h2>
         <div className="flex flex-wrap gap-2">
           {pokemon?.types?.map((type, index) => (
             <span key={index} className={`badge badge-sm badge-soft`}>
