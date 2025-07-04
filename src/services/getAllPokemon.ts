@@ -1,12 +1,12 @@
 'use server';
-import { gql, GraphQLClient } from 'graphql-request';
-import client from './client';
 import logging from '@/utils/logging';
 
-const getAllPokemon = async (offset: number) => {
-  const query = gql`
+const getAllPokemon = async (limit: number, offset: number, search: string) => {
+  const query = `
     query getAllPokemon {
-      data: pokemon(limit: ${offset}) {
+      data: pokemon(limit: ${limit}, offset: ${offset} where: {name: {_ilike: "%${
+    search || ''
+  }%"}}) {
         name
         id
         types: pokemontypes {
@@ -16,6 +16,11 @@ const getAllPokemon = async (offset: number) => {
         }
         sprites: pokemonsprites {
           sprites
+        }
+      }
+      total: pokemon_aggregate(where: {name: {_ilike: "%${search || ''}%"}}) {
+        aggregate {
+          count
         }
       }
     }
@@ -29,9 +34,6 @@ const getAllPokemon = async (offset: number) => {
       },
       method: 'POST',
       body: JSON.stringify({ query }),
-      next: {
-        tags: ['pokemonList'],
-      },
     });
     logging.info('Fetching all Pokémon data');
     return await response.json();

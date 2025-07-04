@@ -7,7 +7,7 @@ export default function PokemonCard({ pokemon }) {
     '/placeholder.png';
 
   return (
-    <div className=" w-full">
+    <div className="w-full">
       <div className="flex gap-1 flex-col">
         <div className="bg-base-200 flex justify-center items-center p-4 rounded-2xl">
           <Image
