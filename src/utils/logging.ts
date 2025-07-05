@@ -2,13 +2,17 @@ enum EStatusLogging {
   Info = 'INFO',
   Error = 'ERROR',
 }
-const logging = {
-  info: (msg: string) => {
-    console.info(`[${EStatusLogging.Info}] ${msg}`);
+const log = {
+  info: (msg: string, data?: any) => {
+    console.info(
+      `[${EStatusLogging.Info}] ${msg} ${data ? JSON.stringify(data) : ''}`
+    );
   },
-  error: (msg: string) => {
-    console.error(`[${EStatusLogging.Error}] ${msg}`);
+  error: (msg: string, data?: any) => {
+    console.error(
+      `[${EStatusLogging.Error}] ${msg} ${data ? JSON.stringify(data) : ''}`
+    );
   },
 };
 
-export default logging;
+export default log;

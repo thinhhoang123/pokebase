@@ -1,5 +1,5 @@
 'use server';
-import logging from '@/utils/logging';
+import log from '@/utils/logging';
 
 const getAllPokemon = async (limit: number, offset: number, search: string) => {
   const query = `
@@ -35,10 +35,10 @@ const getAllPokemon = async (limit: number, offset: number, search: string) => {
       method: 'POST',
       body: JSON.stringify({ query }),
     });
-    logging.info('Fetching all Pokémon data');
+    log.info('Fetching all Pokémon data');
     return await response.json();
   } catch (err) {
-    logging.error(`Error during fetch all Pokémon data: ${err}`);
+    log.error(`Error during fetch all Pokémon data: ${err}`);
   }
 };
 

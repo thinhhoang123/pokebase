@@ -1,6 +1,5 @@
 import PokemonList from '@/components/pokemon-list/pokemon-list';
 import SearchInput from '@/components/search-input';
-import { Filter } from 'lucide-react';
 import Image from 'next/image';
 
 export default async function Home(props: {
@@ -19,10 +18,9 @@ export default async function Home(props: {
       </div>
 
       <div className="flex justify-center gap-2 sticky top-0 z-10 py-4">
-        <SearchInput />
-        <button className="btn btn-square">
-          <Filter size={16} />
-        </button>
+        <SearchInput value={query} />
+
+        {/* TODO: Create a filter for pokemon type */}
       </div>
 
       <PokemonList search={query} />

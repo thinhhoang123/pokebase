@@ -1,5 +1,4 @@
 'use client';
-
 import PokemonCard from './pokemon-card';
 import { useQuery } from '@tanstack/react-query';
 import getAllPokemon from '@/services/getAllPokemon';
@@ -39,7 +38,7 @@ export default function PokemonList({ search }: { search: string }) {
 
   return (
     <>
-      <div className="grid grid-cols-5 gap-6 mt-6">
+      <div className="grid grid-cols-2 md:grid-cols-4  lg:grid-cols-5 gap-6 mt-6">
         {pokemons?.map((pokemon) => (
           <PokemonCard key={pokemon.id} pokemon={pokemon} />
         ))}
