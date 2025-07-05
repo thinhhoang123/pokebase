@@ -1,8 +1,13 @@
 import badgeTypeColors from '@/libs/badge-type-colors';
+import { Pokemon } from '@/models/IPokemons';
 import capitalizeFirstLetter from '@/utils/capital-first-letter';
 import Image from 'next/image';
 
-export default function PokemonCard({ pokemon }) {
+interface PokemonCardProps {
+  pokemon: Pokemon;
+}
+
+export default function PokemonCard({ pokemon }: PokemonCardProps) {
   const imageData =
     pokemon.sprites?.[0].sprites.other['official-artwork'].front_default ||
     '/placeholder.png';

@@ -4,10 +4,11 @@ import { useQuery } from '@tanstack/react-query';
 import getAllPokemon from '@/services/getAllPokemon';
 import { useEffect, useState } from 'react';
 import PokemonCardSkeleton from './pokemon-card-skeleton';
+import { Pokemon } from '@/models/IPokemons';
 
 export default function PokemonList({ search }: { search: string }) {
   const [page, setPage] = useState(0);
-  const [pokemons, setPokemons] = useState([]);
+  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const LIMIT = 20;
 
   const { isLoading, isFetching, data } = useQuery({

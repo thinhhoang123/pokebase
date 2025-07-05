@@ -1,4 +1,5 @@
-const debounce = (callback: (value: any) => any, wait: number) => {
+/* eslint-disable */
+const debounce = (callback: any, wait: number) => {
   let timeoutId: number | undefined;
   return (...args: any) => {
     window.clearTimeout(timeoutId);

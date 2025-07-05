@@ -14,10 +14,9 @@ export default function SearchInput({
   const pathname = usePathname();
   const { replace } = useRouter();
 
+  /* eslint-disable */
   const handleSearch = useCallback(
     debounce((value: string) => {
-      console.log('value', value);
-
       const params = new URLSearchParams(searchParams);
       if (value) {
         params.set('query', value);

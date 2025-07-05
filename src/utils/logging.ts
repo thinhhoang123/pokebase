@@ -3,15 +3,11 @@ enum EStatusLogging {
   Error = 'ERROR',
 }
 const log = {
-  info: (msg: string, data?: any) => {
-    console.info(
-      `[${EStatusLogging.Info}] ${msg} ${data ? JSON.stringify(data) : ''}`
-    );
+  info: (msg: string) => {
+    console.info(`[${EStatusLogging.Info}] ${msg}}`);
   },
-  error: (msg: string, data?: any) => {
-    console.error(
-      `[${EStatusLogging.Error}] ${msg} ${data ? JSON.stringify(data) : ''}`
-    );
+  error: (msg: string) => {
+    console.error(`[${EStatusLogging.Error}] ${msg}}`);
   },
 };
 
