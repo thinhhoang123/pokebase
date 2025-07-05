@@ -1,28 +1,44 @@
-import { gql, GraphQLClient } from 'graphql-request';
-import client from './client';
-import logging from '@/utils/logging';
+'use server';
+import log from '@/utils/logging';
 
-const getAllPokemon = async () => {
-  const query = gql`
+const getAllPokemon = async (limit: number, offset: number, search: string) => {
+  const query = `
     query getAllPokemon {
-      data: pokemon_v2_pokemon(limit: 10) {
+      data: pokemon(limit: ${limit}, offset: ${offset} where: {name: {_ilike: "%${
+    search || ''
+  }%"}}) {
         name
         id
-        types: pokemon_v2_pokemontypes {
-          data: pokemon_v2_type {
+        types: pokemontypes {
+          data: type {
             name
           }
+        }
+        sprites: pokemonsprites {
+          sprites
+        }
+      }
+      total: pokemon_aggregate(where: {name: {_ilike: "%${search || ''}%"}}) {
+        aggregate {
+          count
         }
       }
     }
   `;
 
   try {
-    const response: GraphQLClient = await client.request(query);
-    logging.info('Fetching all Pokémon data');
-    return response;
+    const response = await fetch('https://graphql.pokeapi.co/v1beta2', {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+      body: JSON.stringify({ query }),
+    });
+    log.info('Fetching all Pokémon data');
+    return await response.json();
   } catch (err) {
-    logging.error(`Error during fetch all Pokémon data: ${err}`);
+    log.error(`Error during fetch all Pokémon data: ${err}`);
   }
 };
 

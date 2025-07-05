@@ -1,28 +1,29 @@
-import getAllPokemon from '@/services/getAllPokemon';
-import logging from '@/utils/logging';
+import PokemonList from '@/components/pokemon-list/pokemon-list';
+import SearchInput from '@/components/search-input';
 import Image from 'next/image';
 
-export default async function Home() {
-  const getAllPokemonData = await getAllPokemon();
-  logging.info(`getAllPokemonData: ${JSON.stringify(getAllPokemonData)}`);
+export default async function Home(props: {
+  searchParams?: Promise<{
+    query?: string;
+    page?: string;
+  }>;
+}) {
+  const searchParams = await props.searchParams;
+  const query = searchParams?.query || '';
+
   return (
     <main className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
-      <div className="flex justify-center">
-        <label className="input">
-          <Image
-            src="/pokemon-logo.svg"
-            width={20}
-            height={20}
-            alt="Pokemon logo"
-            // className="animate-spin"
-          />
-          <input
-            type="text"
-            className="grow"
-            placeholder="Search the pokemon"
-          />
-        </label>
+      <div className="flex justify-center mt-12 mb-4">
+        <Image src="/pokedex.svg" width={350} height={350} alt="pokedex" />
       </div>
+
+      <div className="flex justify-center gap-2 sticky top-0 z-10 py-4">
+        <SearchInput value={query} />
+
+        {/* TODO: Create a filter for pokemon type */}
+      </div>
+
+      <PokemonList search={query} />
     </main>
   );
 }

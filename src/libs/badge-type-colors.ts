@@ -1,0 +1,23 @@
+const badgeTypeColors: Record<string, string> = {
+  normal: `bg-gray-50  text-gray-700   border-gray-100`,
+  fire: `bg-red-50   text-red-700    border-red-100`,
+  water: `bg-blue-50  text-blue-700   border-blue-100`,
+  grass: `bg-green-50 text-green-700  border-green-100`,
+  electric: `bg-yellow-50 text-yellow-700 border-yellow-100`,
+  ice: `bg-cyan-50  text-cyan-700   border-cyan-100`,
+  fighting: `bg-pink-50  text-pink-700   border-pink-100`,
+  poison: `bg-purple-50 text-purple-700 border-purple-100`,
+  ground: `bg-stone-50 text-stone-700  border-stone-100`,
+  flying: `bg-sky-50   text-sky-700    border-sky-100`,
+  psychic: `bg-rose-50  text-rose-700   border-rose-100`,
+  bug: `bg-lime-50  text-lime-700   border-lime-100`,
+  rock: `bg-amber-50 text-amber-700  border-amber-100`,
+  ghost: `bg-indigo-50 text-indigo-700 border-indigo-100`,
+  dragon: `bg-violet-50 text-violet-700 border-violet-100`,
+  dark: `bg-gray-50  text-gray-700   border-gray-100`,
+  steel: `bg-slate-50  text-slate-700   border-slate-100`,
+  fairy: `bg-pink-50  text-pink-700   border-pink-100`,
+  unknown: `bg-gray-50  text-gray-700   border-gray-100`,
+  shadow: `bg-gray-50  text-gray-700   border-gray-100`,
+};
+export default badgeTypeColors;
