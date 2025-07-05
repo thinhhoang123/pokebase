@@ -4,10 +4,8 @@ import Image from 'next/image';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useState } from 'react';
 export default function SearchInput({
-  onSearch,
   value = '',
 }: Readonly<{
-  onSearch?: (value: string) => void;
   value: string;
 }>) {
   const [valueSearch, setValueSearch] = useState(value);
