@@ -1,7 +1,11 @@
 'use server';
 import log from '@/utils/logging';
 
-const getAllPokemon = async (limit: number, offset: number, search: string) => {
+export const getAllPokemon = async (
+  limit: number,
+  offset: number,
+  search: string
+) => {
   const query = `
     query getAllPokemon {
       data: pokemon(limit: ${limit}, offset: ${offset} where: {name: {_ilike: "%${
@@ -41,5 +45,13 @@ const getAllPokemon = async (limit: number, offset: number, search: string) => {
     log.error(`Error during fetch all Pokémon data: ${err}`);
   }
 };
-
-export default getAllPokemon;
+export const getAllTypes = async () => {
+  try {
+    const response = await fetch('https://pokeapi.co/api/v2/type?limit=50', {
+      method: 'GET',
+    });
+    return await response.json();
+  } catch (err) {
+    log.error(`Error during fetch all Pokémon data: ${err}`);
+  }
+};

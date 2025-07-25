@@ -1,3 +1,4 @@
+import FilterTypeBtn from '@/components/filter-type-btn';
 import PokemonList from '@/components/pokemon-list/pokemon-list';
 import SearchInput from '@/components/search-input';
 import Image from 'next/image';
@@ -19,8 +20,7 @@ export default async function Home(props: {
 
       <div className="flex justify-center gap-2 sticky top-0 z-10 py-4">
         <SearchInput value={query} />
-
-        {/* TODO: Create a filter for pokemon type */}
+        <FilterTypeBtn />
       </div>
 
       <PokemonList search={query} />

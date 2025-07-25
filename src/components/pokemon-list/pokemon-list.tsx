@@ -1,10 +1,10 @@
 'use client';
 import PokemonCard from './pokemon-card';
 import { useQuery } from '@tanstack/react-query';
-import getAllPokemon from '@/services/getAllPokemon';
 import { useEffect, useState } from 'react';
 import PokemonCardSkeleton from './pokemon-card-skeleton';
 import { Pokemon } from '@/models/IPokemons';
+import { getAllPokemon } from '@/services/pokemon';
 
 export default function PokemonList({ search }: { search: string }) {
   const [page, setPage] = useState(0);
