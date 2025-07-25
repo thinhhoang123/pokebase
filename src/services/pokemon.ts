@@ -4,13 +4,27 @@ import log from '@/utils/logging';
 export const getAllPokemon = async (
   limit: number,
   offset: number,
-  search: string
+  search: string,
+  types: string[]
 ) => {
+  const filterTypes = types.length
+    ? `
+   pokemontypes:  {
+          type:  {
+             name:  {
+                _in: [${types}]
+             }
+          }
+       }
+  `
+    : '';
   const query = `
     query getAllPokemon {
-      data: pokemon(limit: ${limit}, offset: ${offset} where: {name: {_ilike: "%${
-    search || ''
-  }%"}}) {
+      data: pokemon(limit: ${limit}, offset: ${offset} where: 
+      {
+        name: {_ilike: "%${search || ''}%"}
+        _and: [{${filterTypes}}]
+      }) {
         name
         id
         types: pokemontypes {

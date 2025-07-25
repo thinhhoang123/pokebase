@@ -6,15 +6,21 @@ import PokemonCardSkeleton from './pokemon-card-skeleton';
 import { Pokemon } from '@/models/IPokemons';
 import { getAllPokemon } from '@/services/pokemon';
 
-export default function PokemonList({ search }: { search: string }) {
+export default function PokemonList({
+  search,
+  types,
+}: {
+  search: string;
+  types: string[];
+}) {
   const [page, setPage] = useState(0);
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const LIMIT = 20;
 
   const { isLoading, isFetching, data } = useQuery({
-    queryKey: ['pokemonList', page, search],
+    queryKey: ['pokemonList', page, search, types],
     queryFn: async () => {
-      const response = await getAllPokemon(LIMIT, page * LIMIT, search);
+      const response = await getAllPokemon(LIMIT, page * LIMIT, search, types);
       if (response) {
         setPokemons((prev) => [...prev, ...response.data.data]);
       }
@@ -25,7 +31,7 @@ export default function PokemonList({ search }: { search: string }) {
   useEffect(() => {
     setPage(0);
     setPokemons([]);
-  }, [search]);
+  }, [search, types]);
 
   const loadingSkeleton = Array.from({ length: LIMIT }, (_, i) => i)?.map(
     (pokemon) => <PokemonCardSkeleton key={pokemon} />

@@ -35,7 +35,7 @@ function SearchInput({
         width={20}
         height={20}
         alt="Pokemon logo"
-        // className="animate-spin"
+        // className={"animate-spin"}
       />
       <input
         type="text"
