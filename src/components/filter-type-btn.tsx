@@ -61,7 +61,7 @@ function FilterTypeBtn({ types = new Map() }: { types: Map<string, string> }) {
       >
         {isLoading || isFetching
           ? loadingSkeleton
-          : data?.results?.map((type) => {
+          : data?.results?.map((type: { name: string }) => {
               return (
                 <li
                   key={type.name}
