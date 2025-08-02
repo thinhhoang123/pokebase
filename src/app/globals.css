@@ -8,3 +8,7 @@
   --radius-box: 0.5rem;
 }
 
+body {
+  font-family: var(--font-geist-sans);
+}
+

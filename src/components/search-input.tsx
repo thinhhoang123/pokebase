@@ -2,14 +2,14 @@
 import debounce from '@/utils/debouce';
 import Image from 'next/image';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useCallback, useState } from 'react';
-export default function SearchInput({
+import { memo, useCallback, useState } from 'react';
+
+function SearchInput({
   value = '',
 }: Readonly<{
   value: string;
 }>) {
   const [valueSearch, setValueSearch] = useState(value);
-
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -35,7 +35,7 @@ export default function SearchInput({
         width={20}
         height={20}
         alt="Pokemon logo"
-        // className="animate-spin"
+        // className={"animate-spin"}
       />
       <input
         type="text"
@@ -50,3 +50,5 @@ export default function SearchInput({
     </label>
   );
 }
+
+export default memo(SearchInput);

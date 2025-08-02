@@ -15,7 +15,7 @@ export default function PokemonCard({ pokemon }: PokemonCardProps) {
   return (
     <div className="w-full">
       <div className="flex gap-1 flex-col">
-        <div className="bg-gray-100/70 border border-gray-50 flex justify-center items-center p-4 rounded-2xl">
+        <div className="bg-gray-100/70  flex justify-center items-center p-4 rounded-2xl">
           <Image
             src={imageData}
             alt={pokemon.name}
@@ -24,7 +24,7 @@ export default function PokemonCard({ pokemon }: PokemonCardProps) {
             className="drop-shadow-lg hover:drop-shadow-xl transition-all duration-300 ease-in-out"
           />
         </div>
-        <h2 className="card-title">{capitalizeFirstLetter(pokemon.name)}</h2>
+        <h2 className="font-medium">{capitalizeFirstLetter(pokemon.name)}</h2>
         <div className="flex flex-wrap gap-2">
           {pokemon?.types?.map((type, index) => (
             <span

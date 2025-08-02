@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Open_Sans, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import QueryClientProviderComponent from '@/components/provider/query-client';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const geistSans = Open_Sans({
+  variable: '--font-geist-',
   subsets: ['latin'],
 });
 
