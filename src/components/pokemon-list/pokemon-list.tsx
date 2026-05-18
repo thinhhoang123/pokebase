@@ -2,7 +2,7 @@
 import PokemonCard from './pokemon-card';
 import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
-import PokemonCardSkeleton from './pokemon-card-skeleton';
+import PokemonCardSkeleton from '../skeletons/pokemon-card-skeleton';
 import { Pokemon } from '@/models/IPokemons';
 import { getAllPokemon } from '@/services/pokemon';
 
@@ -15,7 +15,8 @@ export default function PokemonList({
 }) {
   const [page, setPage] = useState(0);
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
-  const LIMIT = 20;
+  const LIMIT = 50;
+
 
   const { isLoading, isFetching, data } = useQuery({
     queryKey: ['pokemonList', page, search, types],

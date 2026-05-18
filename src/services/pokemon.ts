@@ -12,7 +12,7 @@ export const getAllPokemon = async (
    pokemontypes:  {
           type:  {
              name:  {
-                _in: [${types}]
+                _in: ["${types.join('", "')}"]
              }
           }
        }
@@ -44,6 +44,7 @@ export const getAllPokemon = async (
     }
   `;
 
+  console.log(query);
   try {
     const response = await fetch('https://graphql.pokeapi.co/v1beta2', {
       headers: {

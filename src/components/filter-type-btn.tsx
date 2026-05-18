@@ -44,7 +44,7 @@ function FilterTypeBtn({ types = new Map() }: { types: Map<string, string> }) {
   );
 
   return (
-    <div className="dropdown">
+    <div className="dropdown dropdown-end">
       <div className="indicator">
         <div tabIndex={0} role="button" className="btn btn-square m-1">
           {types?.size > 0 ? (
@@ -61,7 +61,7 @@ function FilterTypeBtn({ types = new Map() }: { types: Map<string, string> }) {
       >
         {isLoading || isFetching
           ? loadingSkeleton
-          : data?.results?.map((type: { name: string }) => {
+          : data?.results?.filter((type: { name: string }) => !["stellar", "shadow", "unknown"].includes(type.name))?.map((type: { name: string }) => {
               return (
                 <li
                   key={type.name}

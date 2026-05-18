@@ -14,22 +14,25 @@ export default function PokemonCard({ pokemon }: PokemonCardProps) {
 
   return (
     <div className="w-full">
-      <div className="flex gap-1 flex-col">
-        <div className="bg-gray-100/70  flex justify-center items-center p-4 rounded-2xl">
+      <div className="flex gap-1 flex-col group hover:cursor-pointer">
+        <div className="bg-gray-100/70 border border-gray-100/70 flex justify-center items-center p-4 rounded-2xl relative group-hover:border-gray-900">
           <Image
             src={imageData}
             alt={pokemon.name}
-            width={120}
-            height={120}
-            className="drop-shadow-lg hover:drop-shadow-xl transition-all duration-300 ease-in-out"
+            width={160}
+            height={160}
+            className="drop-shadow-md group-hover:drop-shadow-xl transition-all duration-100 ease-in-out"
           />
+          <p className="text-sm text-gray-500/30 font-bold italic absolute top-2 left-4">
+          #{pokemon.id.toString().padStart(3, '0')}
+        </p>
         </div>
-        <h2 className="font-medium">{capitalizeFirstLetter(pokemon.name)}</h2>
+        <h2 className="font-medium mb-2">{capitalizeFirstLetter(pokemon.name)}</h2>
         <div className="flex flex-wrap gap-2">
           {pokemon?.types?.map((type, index) => (
             <span
               key={index}
-              className={`badge badge-sm badge-soft ${
+              className={`badge badge-xs md:badge-sm badge-soft ${
                 badgeTypeColors[type.data.name]
               }`}
             >
